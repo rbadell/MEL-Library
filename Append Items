@@ -1,0 +1,9 @@
+	local sAppend=""
+	local i, imax=getnargs()
+	if imax>1 then	
+		sDelimiter=getarg(1)
+		for i=2,i<=imax,i=i+1 do
+			sAppend=sAppend + (if sAppend<>"" and getarg(i)<>"",sDelimiter,"") + getarg(i)
+		endfor
+		return sAppend 
+	else return "" endif
