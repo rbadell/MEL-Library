@@ -1,0 +1,25 @@
+\* Determines the most recent value entered by comparing duration between 5 dates */
+
+local finaldate = "Never"
+local todaydate = str(._TODAYSDATE)
+if Date1 <> "" then
+	if finaldate == "Never" then finaldate = Date1
+	else if DURATIONDAYS(Date1,finaldate) < 0 
+	then finaldate = Date1 endif endif endif
+if Date2 <> "" then
+	if finaldate == "Never" then finaldate = Date2
+	else if DURATIONDAYS(Date2,finaldate) < 0 
+	then finaldate = Date2 endif endif endif
+if Date3 <> "" then
+	if finaldate == "Never" then finaldate = Date3
+	else if DURATIONDAYS(Date3,finaldate) < 0 
+	then finaldate = Date3 endif endif endif
+if Date4 <> "" then
+	if finaldate == "Never" then finaldate = Date4
+	else if DURATIONDAYS(Date4,finaldate) < 0 
+	then finaldate = Date4 endif endif endif
+if Date5 <> "" then
+	if finaldate == "Never" then finaldate = Date5
+	else if DURATIONDAYS(Date5,finaldate) < 0 
+	then finaldate = Date5 endif endif endif
+return finaldate
