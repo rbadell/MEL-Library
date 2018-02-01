@@ -1,0 +1,15 @@
+\* This code inserts pronouns based on the sex entered during registration in medical software *\
+
+His / Her / Their: 
+cond
+case (PATIENT.SEX == "M") if (gcase == "lower") then return "his" else return "His" endif
+case (PATIENT.SEX == "F") if (gcase == "lower") then return "her" else return "Her"	endif
+else if (gcase == "lower") then return "their" else return "Their" endif
+endcond
+
+He / She / They: 
+cond
+case (PATIENT.SEX == "M") if (gcase == "lower") then return "he" else return "He" endif
+case (PATIENT.SEX == "F") if (gcase == "lower") then return "she" else return "She"	endif
+else if (gcase == "lower") then return "they" else return "They" endif
+endcond
