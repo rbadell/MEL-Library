@@ -1,0 +1,28 @@
+\* Extracts the patient's problem list in a readable format including the descriptions and ICD codes *\
+
+	local strProblemList = getfield(strProbs, "|", "")
+   local nStart
+   local strBuf
+   local strFormattedList = ""
+
+   for i = 1, i <= size(strProblemList), i = i + 1 do
+      strProblemList[i] = getfield(strProblemList[i], "^", "")
+      strBuf = ReplaceStr(InitialCap(strProblemList[i][2]) + " (" + strProblemList[i][8] + ")", ",", ";")
+		strType = tolower(strProblemList[i][1])
+		cond
+			case (strType == "dx of") strBuf = ("") + strBuf
+			case (strType == "mdxof") strBuf = ("Minor diagnosis of ") + strBuf
+			case (strType == "h/f") strBuf = ("Hospitalized for ") + strBuf
+			case (strType == "hx of") strBuf = ("History of ") + strBuf
+			case (strType == "s/p") strBuf = ("Status post ") + strBuf
+			case (strType == "r/o") strBuf = ("Rule out ") + strBuf
+			case (strType == "? of") strBuf = ("Question of ") + strBuf
+			case (strType == "sx of") strBuf = ("Symptom of ") + strBuf
+			case (strType == "rs of") strBuf = ("Risk of ") + strBuf
+			case (strType == "note:") strBuf = ("Take note of ") + strBuf
+			case (strType == "fh of") strBuf = ("Family history of ") + strBuf
+		endcond      
+		strFormattedList = CFMT(strFormattedList,"","","",",") + strBuf
+   endfor
+
+   return strFormattedList
