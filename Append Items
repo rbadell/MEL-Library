@@ -1,3 +1,5 @@
+	\* Creates a For Loop to append items into a list if those items are not null *\
+	
 	local sAppend=""
 	local i, imax=getnargs()
 	if imax>1 then	
